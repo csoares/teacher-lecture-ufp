@@ -22,8 +22,11 @@ def scrape(site):
     course = s.select_one('.E2')
     teacher = s.select_one('.B2E2R2')
     if course and teacher:
+        code = site.split("+")
+        print(code[1] + " "+code[2] + " " + code[3])
         print("course -" + course.text + " teacher -" + teacher.text)
-        f.write(course.text+";"+teacher.text+"\n")
+        f.write(code[1] + ";"+code[2] + ";" + code[3] +
+                ";" + course.text+";"+teacher.text+"\n")
 
     for i in s.find_all("a"):
         href = i.attrs['href']
