@@ -8,7 +8,7 @@ urls = []
 url = "http://ects.ufp.pt//"
 # function created
 
-f = open('informations.csv', 'a')
+f = open('informations.csv', 'w')
 
 
 def scrape(site):
@@ -26,7 +26,7 @@ def scrape(site):
         print(code[1] + " "+code[2] + " " + code[3])
         print("course -" + course.text + " teacher -" + teacher.text)
         f.write(code[1] + ";"+code[2] + ";" + code[3] +
-                ";" + course.text+";"+teacher.text+"\n")
+                ";" + course.text+";"+teacher.text + ";" + site + "\n")
 
     for i in s.find_all("a"):
         href = i.attrs['href']
